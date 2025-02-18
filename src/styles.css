@@ -1,0 +1,391 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+html {
+    height: 100%;
+    overflow: hidden;
+  }
+body{
+    background-color: #F7F7F9;
+    width: 100dvw;
+    max-height: 100dvh;
+    display:grid;
+    /* grid-template-columns: minmax(150px, 1fr) 5fr; */
+    grid-template-columns: 0.1fr auto;
+    grid-template-rows: 1fr;
+    font-size: clamp(20px,2vw,1.5rem);
+    gap: 1rem;
+    /* overflow: hidden; */
+}
+header{
+    background-color: white;
+    grid-column: 1/2;
+    max-height: 100dvh;
+
+}
+main{
+    grid-column: 2/3;
+}
+header{
+    display: grid;
+    height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+    padding: 1rem;
+    gap: 1.5rem;
+    min-width: 280px;
+    max-width: 280px;
+    
+}
+.status{
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    border-bottom: solid 1px #F696A9;
+    padding-bottom: 1.5rem;
+    /* margin-bottom: 1rem; */
+}
+.completed-tasks,.pending-tasks{
+    font-size: clamp(20px,2vw,1.5rem);/* font-size: 1.5rem; */
+    background-color: white;
+    border: none;
+    text-align: left;
+}
+.project-list{
+    grid-row: 2/3;
+}
+.addproject{
+    grid-row: 3/4;
+    color: #F696A9;
+}
+.completed,.pending{
+    display: flex;
+    gap: 1rem;
+    justify-content: baseline;
+    align-items: center;
+}
+.completed-svg,.pending-svg{
+    height: clamp(25px,2vw,2rem);
+    width: clamp(25px,2vw,2rem);
+}
+hr{
+    border: 1px solid red;
+}
+.project-list{
+    /* display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem; */
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+.projectHeader{
+    grid-row: 1/2;
+    
+}
+li{
+    padding-top: 1rem;
+    padding-right:0.5rem ;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items:baseline;
+    justify-content: baseline;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+}
+.projectlists{
+    grid-row: 2/3;
+    padding-left: 2rem;
+    font-size: clamp(16px,2vw,1.2rem);
+    flex: 1;
+    height: 70vh;
+    
+    overflow-y: auto;
+    scrollbar-width:thin;
+    scrollbar-color: #f3b5c1 #f5d9de;
+}
+.edit,.check{
+    height: clamp(16px,2vw,1.2rem);
+    width: clamp(16px,2vw,1.2rem);
+}
+li .edit,li .check { display: none; }
+
+li:hover .edit { display: inline-block; }
+li:hover .check { display: inline-block; }
+
+/* ::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      magenta,
+      rebeccapurple,
+      dodgerblue,
+      green
+    );
+    opacity: 0.75;
+  } */
+.editprojectdialog,.addprojectdialog,.add-task-dialog{
+    /* display: block; */
+    /* justify-content: center; */
+    align-self: center;
+    justify-self: center;
+    /* width: 25vw;
+    height: 25vh; */
+    height: clamp(100px,50vw,225px);
+    width: clamp(100px,50vw,500px);
+    border:none;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.editdialogboxflex,.dialogboxflex,.add-task-dialogbox-flex{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    flex: 1;
+    font-size: clamp(16px,2vw,1.5rem);
+    /* height: clamp(50px,50vw,225px);
+    width: clamp(50px,50vw,500px); */
+}
+#editprojectnameinput,#projectnameinput,#add-task-title-input{
+    font-size: 1.5rem;
+    flex: 1;
+    font-size: clamp(16px,2vw,1.5rem)
+}
+.project-dialog-btns,.add-task-dialog-btns{
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+    flex: 1;
+    font-size: clamp(16px,2vw,1.5rem)
+}
+
+.canceleditprojectbtn,.addeditprojectbtn,.addprojectbtn,.cancelprojectbtn,.add-task-ok-btn,.cancel-task-btn{
+    justify-self: right;
+    align-self: right;
+    font-size: clamp(16px,1vw,1rem);
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: clamp(5rem,10vw,5rem);
+    /* flex:1; */
+}
+.addprojectbtn,.addeditprojectbtn,.add-task-ok-btn{
+    color: white;
+    background-color: #F696A9;
+}
+#projectnameinput,#editprojectnameinput,#add-task-title-input{
+    border: 1px solid lightgray;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    font-size: clamp(16px,1vw,1rem)
+}
+.active{
+    background-color: rgb(230, 230, 230);
+    border-radius: 0.5rem;
+    margin: 0.3rem;
+}
+.completed.active, .pending.active {
+    background-color: rgb(230, 230, 230);
+    padding: 0.5rem;
+}
+.completed.active .completed-tasks, 
+.pending.active .pending-tasks {
+    background-color: rgb(230, 230, 230);
+}
+main{
+    padding: 1rem;
+    display:flex;
+    flex-direction: column;
+    /* gap: 5rem; */
+}
+.main-title{
+    font-size: clamp(1rem,5vw + 1rem,3rem);
+    padding-bottom: 1rem;
+}
+
+.task-box{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-left:clamp(2rem,4vw + 1rem,5rem);
+    margin-right:clamp(2rem,4vw + 1rem,5rem);
+    max-width: 50vw;
+    padding: 1rem;
+}
+
+.task-box-left{
+    display: flex;
+    gap: 1rem;
+    justify-content: baseline;
+    align-items: baseline;
+}
+.task-subdetails{
+    display: flex;
+    gap: 2rem;
+    font-size: 1rem;
+    align-items: center;
+}
+.edit-task,.delete-task{
+    width: clamp(1rem,1vw + 1rem,2rem);
+    height: clamp(1rem,1vw + 1rem,2rem);
+}
+.task-priority{
+    width: clamp(1rem,1vw + 1rem,1.5rem);
+    height: clamp(1rem,1vw + 1rem,1.5rem);
+}
+.add-task-dialog,.addprojectdialog{
+    height: auto;
+}
+/* .task-box-right{
+    display: flex;
+} */
+
+/* Edit Task Dialog (similar to .addprojectdialog or .add-task-dialog) */
+.edit-task-dialog {
+    height: auto;
+    max-height: 100dvh;
+    width: clamp(300px, 50vw, 600px);
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    justify-self: center;
+    align-self: center;
+    /* If you want a backdrop blur on modern browsers:
+       backdrop-filter: blur(2px); 
+    */
+  }
+  
+  /* Container inside the dialog for flex layout */
+  .edit-task-dialogbox-flex {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    flex: 1; 
+    font-size: clamp(16px, 2vw, 1.5rem);
+    background-color: #fff; /* or whatever background you prefer */
+  }
+  
+  /* Label and input styles (similar to your existing inputs/buttons) */
+  .edit-task-dialogbox-flex label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .edit-task-dialogbox-flex input[type="text"],
+  .edit-task-dialogbox-flex input[type="date"],
+  .edit-task-dialogbox-flex textarea,
+  .edit-task-dialogbox-flex select {
+    border: 1px solid lightgray;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: clamp(16px, 2vw, 1rem);
+    width: 100%;
+    background-color: #fff;
+    /* If needed, you can limit width further or add a max-width. */
+  }
+  .edit-task-desc>textarea{
+    resize: none;
+  }
+  /* Subtasks section container */
+  .subtasks-section {
+    border: 1px solid #f2f2f2;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: #fafafa;
+  }
+  
+  /* Where each subtask item is listed */
+  .subtasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 10rem; /* scrollable if you have many subtasks */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #f3b5c1 #f5d9de;
+  }
+  
+  /* Single subtask row: checkbox, title text, and a delete button/icon */
+  .subtask-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .subtask-complete {
+    /* style your checkboxes if needed */
+    width: clamp(1rem, 1vw + 1rem, 1.5rem);
+    height: clamp(1rem, 1vw + 1rem, 1.5rem);
+  }
+  
+  .subtask-title {
+    flex: 1; /* so it grows to fill space */
+  }
+  
+  .delete-subtask-btn {
+    background: none;
+    border: none;
+    color: #F696A9;
+    font-weight: bold;
+    cursor: pointer;
+    /* optionally add some hover effect */
+  }
+  
+  /* Button for adding new subtasks inside the dialog */
+  .add-subtask-btn {
+    margin-top: 0.5rem;
+    background-color: #F696A9;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  /* Task status checkbox wrapper */
+  .task-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Priority/Project dropdown alignment if you want them side-by-side:
+     .edit-task-dialogbox-flex select {
+       width: auto;
+       min-width: 8rem;
+     }
+  */
+  
+  /* Dialog buttons (similar to your .project-dialog-btns/.add-task-dialog-btns) */
+  .task-dialog-btns {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 1rem;
+    flex: 1;
+    font-size: clamp(16px, 2vw, 1.5rem);
+  }
+  
+  .save-task-btn,
+  .cancel-edit-task-btn {
+    font-size: clamp(16px, 1vw, 1rem);
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: clamp(5rem, 10vw, 6rem);
+    cursor: pointer;
+  }
+  
+  .save-task-btn {
+    color: white;
+    background-color: #F696A9;
+  }
+  

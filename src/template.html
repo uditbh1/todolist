@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+</head>
+<body>
+    <header>
+        <div class="status">
+            <div class="completed nav">
+                <svg class="completed-svg" fill="#F696A9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>checkbox-marked-circle</title><path d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
+                <button class="btn completed-tasks">Completed Tasks</button>
+            </div>
+            <div class="pending nav">
+                <svg class="pending-svg" fill="#F696A9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>file-clock</title><path d="M4 2C2.89 2 2 2.89 2 4V20A2 2 0 0 0 4 22H12.41A7 7 0 0 0 16 23A7 7 0 0 0 23 16A7 7 0 0 0 18 9.3V8L12 2H4M11 3.5L16.5 9H11V3.5M16 11A5 5 0 0 1 21 16A5 5 0 0 1 16 21A5 5 0 0 1 11 16A5 5 0 0 1 16 11M15 12V17L18.61 19.16L19.36 17.94L16.5 16.25V12H15Z" /></svg>
+                <button class="btn pending-tasks">Pending Tasks</button>
+            </div>
+        </div>
+        <div class="project-list">
+            <p class="projectHeader"># Project-list</p>
+            <ul class="projectlists">
+                
+            </ul>
+        </div>
+        <dialog class="editprojectdialog">
+            <div class="editdialogboxflex">
+                <h4>Edit Project Name</h4>
+                <input type="text" id="editprojectnameinput" name="editprojectnameinput" minlength="1" maxlength="15" placeholder="Title can't be more than 15 characters">
+                <div class="project-dialog-btns">
+                    <button class="addeditprojectbtn">Add</button>
+                    <button class="canceleditprojectbtn">Cancel</button>
+                </div>
+            </div>
+        </dialog>
+        <dialog class="addprojectdialog">
+            <div class="dialogboxflex">
+                <h4>Add Project Name</h4>
+                <input type="text" id="projectnameinput" name="projectnameinput" minlength="1" maxlength="10" placeholder="Title can't be more than 10 characters">
+                <div class="project-dialog-btns">
+                    <button class="addprojectbtn">Add</button>
+                    <button class="cancelprojectbtn">Cancel</button>
+                </div>
+            </div>
+        </dialog>
+        <div class="addproject">+ Add Project</div>
+    </header>
+    <main>
+        <h1 class="main-title">Demo Title</h1>
+        <dialog class="add-task-dialog">
+            <div class="add-task-dialogbox-flex">
+                <h4>Add Task Title</h4>
+                <input type="text" id="add-task-title-input" name="add-task-title-input" minlength="1" maxlength="10" placeholder="Add Title">
+                <div class="add-task-dialog-btns">
+                    <button class="add-task-ok-btn">Add</button>
+                    <button class="cancel-task-btn">Cancel</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog class="edit-task-dialog">
+            <div class="dialogboxflex">
+              <h2>Edit Task</h2>
+          
+              <!-- Title -->
+              <label for="edit-task-title">Task Title</label>
+              <input 
+                type="text" 
+                id="edit-task-title" 
+                name="edit-task-title" 
+                maxlength="50" 
+                placeholder="Enter new title..."
+              /> 
+          
+              <!-- Due Date -->
+              <label for="edit-task-due-date">Due Date</label>
+              <input 
+                type="date" 
+                id="edit-task-due-date" 
+                name="edit-task-due-date"
+              />
+          
+              <!-- Description -->
+              <label for="edit-task-desc">Description</label>
+              <textarea 
+                id="edit-task-desc" 
+                name="edit-task-desc" 
+                rows="4" 
+                placeholder="Enter description..."
+              ></textarea>
+          
+              <!-- Subtasks Section -->
+              <section class="subtasks-section">
+                <h3>Subtasks</h3>
+                <div class="subtasks-container">
+                </div>
+          
+                <!-- Button to add a new subtask -->
+                <div class="add-subtask-controls">
+                  <input 
+                    type="text" 
+                    class="new-subtask-input"
+                    placeholder="Enter subtask title"
+                  />
+                <button type="button" class="add-subtask-btn">+ Add Subtask</button>
+              </section>
+
+              <div class="task-status">
+                <label for="edit-task-completed">
+                  <input 
+                    type="checkbox" 
+                    id="edit-task-completed" 
+                    name="edit-task-completed"
+                  />
+                  Mark as Completed
+                </label>
+              </div>
+          
+              <!-- Project Selection -->
+              <label for="edit-task-project">Project</label>
+              <select 
+                id="edit-task-project" 
+                name="edit-task-project"
+              >
+              </select>
+          
+              <!-- Priority Selection -->
+              <label for="edit-task-priority">Priority</label>
+              <select 
+                id="edit-task-priority" 
+                name="edit-task-priority"
+              >
+                <option value="NONE">No Priority</option>
+                <option value="LOW">Low Priority</option>
+                <option value="MEDIUM">Medium Priority</option>
+                <option value="HIGH">High Priority</option>
+              </select>
+              <!-- Dialog Buttons -->
+              <div class="task-dialog-btns">
+                <button type="button" class="save-task-btn">Save</button>
+                <button type="button" class="cancel-edit-task-btn">Cancel</button>
+              </div>
+            </div>
+          </dialog>
+          
+        <div class="main-container">
+            
+        </div>
+    </main>
+    
+</body>
+</html>
